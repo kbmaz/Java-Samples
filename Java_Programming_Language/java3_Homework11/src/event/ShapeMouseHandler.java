@@ -60,8 +60,12 @@ public class ShapeMouseHandler extends MouseAdapter {
      }
        
        if(model.getAction() == Model.MOVE) {
-         shape = model.returnSelectShape(e.getX(), e.getY()); 
-         
+         if(model.getShapeArrayList() != null) {
+           if(shape != null) {
+             model.getShapeArrayList();
+             shape = model.returnSelectShape(e.getX(), e.getY()); 
+           }
+         } 
        }
        
        if(model.getAction() == Model.REMOVE) {
@@ -70,13 +74,22 @@ public class ShapeMouseHandler extends MouseAdapter {
        }
        
        if(model.getAction() == Model.CHANGE) {
-         
-         shape = model.returnSelectShape(e.getX(), e.getY());
-         shape.setLineColor(model.lineColor(model.getCurrentLineColor()));
+         if(model.getShapeArrayList() != null) {
+           if(shape != null) { 
+             model.getShapeArrayList();
+             shape = model.returnSelectShape(e.getX(), e.getY()); 
+             shape.setLineColor(model.lineColor(model.getCurrentLineColor()));
+           }
+         }    
        }
        
        if(model.getAction() == Model.RESIZE) {
-         shape = model.returnSelectShape(e.getX(), e.getY());
+         if(model.getShapeArrayList() != null) {
+           if(shape != null) { 
+             model.getShapeArrayList();
+             shape = model.returnSelectShape(e.getX(), e.getY());
+           }
+         }
        }
      
      //tell model to repaint applet or application.
