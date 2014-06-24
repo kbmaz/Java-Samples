@@ -16,17 +16,17 @@ public class Oval extends Rectangle {
    * Override Rectangle draw(Graphics g) method.
    */
   public void draw(Graphics g) {
-    //Save state of the object before changing it.
+    //Save the state of the object before changing it.
     Color oldColor = g.getColor();
-    if (isFill()) {
+    if(isFill()) {
       g.setColor(getFillColor());
       g.fillOval(getX(), getY(), getW(), getH());
     }
     g.setColor(getLineColor());
     g.drawOval(getX(), getY(), getW(), getH());
-      //Set the state back when done.
-      g.setColor(oldColor);
-    }
+    //Set the state back when done.
+    g.setColor(oldColor);
+  }
   
   public int getArea() {
     double area;
