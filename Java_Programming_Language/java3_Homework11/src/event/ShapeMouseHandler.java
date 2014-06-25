@@ -3,9 +3,9 @@ package event;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-//import java.util.ArrayList;
-//import java.util.Iterator;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import model.Model;
 import shapes.Rectangle;
@@ -19,7 +19,7 @@ public class ShapeMouseHandler extends MouseAdapter {
   private int startX;
   private int startY;
   private Shape shape;
-  //private List<Shape> shapeArrayList = new ArrayList<Shape>();
+  private List<Shape> shapeArrayList = new ArrayList<Shape>();
   
    public ShapeMouseHandler(Model model) {
      //persist local variable model to this.model.
@@ -62,8 +62,8 @@ public class ShapeMouseHandler extends MouseAdapter {
        if(model.getAction() == Model.MOVE) {
          if(model.getShapeArrayList() != null) {
            if(shape != null) {
-             model.getShapeArrayList();
-             shape = model.returnSelectShape(e.getX(), e.getY()); 
+             shape  = shapeArrayList.get(i);
+             shape = model.returnSelectShape(e.getX(), e.getY());   
            }
          } 
        }
