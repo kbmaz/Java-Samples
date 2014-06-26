@@ -33,7 +33,7 @@ public class ShapeMouseHandler extends MouseAdapter {
    //original upper left x and y of the shape.
      startX = e.getX();
      startY = e.getY();
-     super.mousePressed(e);
+     
      if (model.getAction() == Model.DRAW) {
        //have the model create a new shape for us.
        shape = model.createShape();
