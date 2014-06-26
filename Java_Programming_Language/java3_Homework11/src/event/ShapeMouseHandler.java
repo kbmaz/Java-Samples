@@ -80,10 +80,7 @@ public class ShapeMouseHandler extends MouseAdapter {
          ((Rectangle) shape).setFillColor(model.fillColor(model.getCurrentFillColor()));         
        }
        
-       if(model.getAction() == Model.RESIZE) {
-         shape = model.returnSelectShape(e.getX(), e.getY()); 
-           
-       }
+       
      }
      
      //tell model to repaint applet or application.
@@ -122,6 +119,35 @@ public class ShapeMouseHandler extends MouseAdapter {
            ((Line)shape).setX2(e.getX());
            ((Line)shape).setY2(e.getY());
          }
+       }
+     }
+     
+     shape = model.returnSelectShape(e.getX(), e.getY());
+     
+     if(shape != null) {
+       
+       if(model.getAction() == Model.RESIZE) {
+         
+         if(shape instanceof Rectangle) {
+           //set the x and y location of the shape (allows rubber banding).
+           //set its width and height.
+           shape.setX(Math.min(startX, e.getX()));
+           shape.setY(Math.min(startY, e.getY()));
+           ((Rectangle) shape).setW(Math.abs(startX - e.getX()));
+           ((Rectangle) shape).setH(Math.abs(startY = e.getY()));
+         }
+         else if(shape instanceof Oval) {
+           //set the x and y location of the shape (allows rubber banding).
+           //set its width and height.
+           shape.setX(Math.min(startX, e.getX()));
+           shape.setY(Math.min(startY, e.getY()));
+           ((Oval) shape).setW(Math.abs(startX - e.getX()));
+           ((Oval) shape).setH(Math.abs(startY = e.getY()));
+         }
+         else if (shape instanceof Line) {
+           ((Line)shape).setX2(e.getX());
+           ((Line)shape).setY2(e.getY());
+         } 
        }
      }
      //tell model to repaint the applet or application.
